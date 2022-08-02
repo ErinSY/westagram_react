@@ -3,7 +3,7 @@ import './Main.scss';
 
 function Nav() {
   return (
-    <header className='flex header'>
+    <header className='flex nav'>
       <div className='inner flex'>
         <div className='header_left flex'>
           <img
@@ -269,7 +269,7 @@ const Main = () => {
     <main className='mainwrap'>
       <Nav />
       <main className='main'>
-        <div className='maininner'>
+        <div className='main_inner'>
           <AsideLeft />
           <AsideRight />
         </div>

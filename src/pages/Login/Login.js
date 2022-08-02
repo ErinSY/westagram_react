@@ -33,12 +33,12 @@ const Login = () => {
             size='1'
           />
 
+            <Link className='link' to='/main'>
           <button className='loginbtn'>
             {' '}
-            <Link className='link' to='/main'>
               로그인
-            </Link>
           </button>
+            </Link>
         </form>
 
         <footer>
