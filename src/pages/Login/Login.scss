@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import '../../styles/mixin.scss';
-@import '../../styles/variables.scss';
+@import '../styles/mixin.scss';
+@import '../styles/variables.scss';
+@import '../styles/common.scss';
 
 .login_main {
   .mainBox {
@@ -39,8 +40,17 @@
       .link {
         margin-top: 15px;
 
-        .loginbtn {
+        .loginbtn:disabled {
           background-color: #c4e1fb;
+          border-radius: 10px;
+          height: 50px;
+          width: 360px;
+          border: 1px solid white;
+          color: white;
+          font-size: 20px;
+        }
+        .loginbtn {
+          background-color: #0095f6;
           border-radius: 10px;
           height: 50px;
           width: 360px;

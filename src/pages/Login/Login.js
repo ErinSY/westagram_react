@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+
 import './Login.scss';
 const Login = () => {
-  const navigate = useNavigate();
+  // state
+  const [userId, setUserId] = useState('');
+  const [userPw, setUserPw] = useState('');
 
+  // set 함수
+  const saveUserId = (event) => {
+    setUserId(event.target.value); //userID에 사용자의 입력값을 넣어줌
+  };
+  const saveUserPw = (event) => {
+    setUserPw(event.target.value);
+  };
+  const validation = (userId, userPw) => {
+    return (
+      userId.indexOf('@') !== -1 && userId.length >= 6 && userPw.length >= 5
+    );
+  };
+
+  // Navigate
+  const navigate = useNavigate();
   const goToMain = () => {
     navigate('/main');
   };
@@ -17,32 +35,34 @@ const Login = () => {
         </header>
         <form className='flex form'>
           <input
+            classId=''
             className='pwAndId'
             type='text'
-            // onkeyup='buttonactive()'
             placeholder='전화번호, 사용자 이름 또는 이메일'
-            required
-            size='1'
+            value={userId}
+            onChange={saveUserId}
+            onKeyUp={validation}
           />
           <input
             className='pwAndId'
             type='password'
-            // onkeyup='buttonactive()'
             placeholder='비밀번호'
-            required
-            size='1'
+            value={userPw}
+            onChange={saveUserPw}
           />
 
-            <Link className='link' to='/main'>
-          <button className='loginbtn'>
-            {' '}
+          <Link className='link' to='/main'>
+            <button
+              className='loginbtn'
+              disabled={validation(userId, userPw) === true ? false : true}
+            >
               로그인
-          </button>
-            </Link>
+            </button>
+          </Link>
         </form>
 
         <footer>
-          <a className='atag' href='#'>
+          <a className='atag' href='/'>
             비밀번호를 잊으셨나요?
           </a>
         </footer>
